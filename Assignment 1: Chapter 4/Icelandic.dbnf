@@ -36,61 +36,60 @@ S ::= NP aux neg? AdV? have? cop Comp # nsubj aux advmod advmod aux cop head
 -- subordinate
 S ::= NP neg? AdV? aux? have? cop Comp # nsubj advmod advmod aux aux cop head
 
-S ::= NP VP # nsubj head
-S ::= NP do neg VP  # nsubj aux advmod head
-S ::= NP have neg? VP  # nsubj aux advmod head
-S ::= NP aux neg? have? VP  # nsubj aux advmod aux head
+-- inverted
+S ::= cop NP neg? AdV? Comp # cop nsubj advmod advmod head
+S ::= have NP neg? AdV? cop Comp # aux nsubj advmod advmod cop head
+S ::= aux NP neg? AdV? have? cop Comp # aux nsubj advmod advmod aux cop head
 
-S ::= NP cop AdV? neg? Comp # nsubj cop advmod advmod head
-S ::= NP have AdV? neg? cop Comp # nsubj aux advmod advmod cop head
-S ::= NP aux AdV?  neg? have? cop Comp # nsubj aux advmod advmod aux cop head
+S ::= NP VP_pass neg? # nsubj:pass head advmod # 0.8
+S ::= NP have neg? AdV? VP_pass # nsubj:pass aux advmod advmod head # 0.8
+S ::= NP aux neg? AdV? have? VP_pass # nsubj:pass aux advmod advmod aux head # 0.8
+S ::= NP V_pass neg? AdV? NP_obl? Adv? # nsubj:pass head advmod advmod obl advmod # 0.8
 
-S ::= NP cop AdV? neg? VP_pass # nsubj:pass aux:pass advmod advmod head
-S ::= NP have AdV? neg? cop VP_pass # nsubj:pass aux advmod advmod aux:pass head
-S ::= NP aux AdV? neg? have? cop VP_pass # nsubj:pass aux advmod advmod aux aux:pass head
+S ::= það finnast neg? AdV? NP # expl head advmod advmod nsubj
+S ::= það neg? AdV? finnast NP # expl advmod advmod head nsubj
+S ::= finnast það neg? AdV? NP # head expl advmod advmod nsubj
+S ::= það hafa? AdV? neg? finnast NP # expl aux advmod advmod head nsubj
+S ::= það aux? AdV? neg? hafa finnast NP # expl aux advmod advmod aux head nsubj
+S ::= hafa? það AdV? neg? finnast NP # aux expl advmod advmod head nsubj
+S ::= aux? það AdV? neg? hafa finnast NP # aux expl advmod advmod aux head nsubj
 
-S ::= there be_V AdV? neg? NP # expl head advmod advmod nsubj
-S ::= there have AdV? neg? be_V neg? NP # expl aux advmod advmod head nsubj
-S ::= there aux AdV? neg? have? be_V NP # expl aux advmod advmod aux head nsubj
 S ::= it cop AdV? neg? AP # expl cop advmod advmod head
+S ::= it AdV? neg? cop AP # expl advmod advmod cop head
+S ::= cop it AdV? neg? AP # cop expl advmod advmod head
 
 S ::= NP be_V neg? SC # nsubj head advmod ccomp
 S ::= NP have neg? be_V SC # nsubj aux advmod head ccomp
 S ::= NP aux neg? have? be_V SC # nsubj aux advmod aux head ccomp
 
-S ::= SC VP # csubj head
-S ::= SC do neg VP # csubj aux advmod head
+
+
+S ::= SC VP neg? # csubj head advmod
+S ::= SC neg VP # csubj advmod head
 S ::= SC cop neg? VP_pass # csubj:pass aux:pass advmod head
 S ::= SC have neg? cop VP_pass # csubj:pass aux advmod aux:pass head
 S ::= S_front NP VS # parataxis nsubj head
 
-QS ::= do NP neg? VP # aux nsubj advmod head
-QS ::= aux NP neg? have? VP # aux nsubj advmod aux head
-QS ::= cop NP neg? Comp # cop nsubj advmod head
-QS ::= cop neg NP Comp # cop nsubj advmod head
+QS ::= IP VP neg? AdV? # nsubj head advmod advmod
+QS ::= IP have? neg? AdV? VP # nsubj aux advmod advmod head
+QS ::= IP aux neg? AdV? have? VP # nsubj aux advmod advmod aux head
+QS ::= IP cop neg? Adv? Comp # nsubj cop advmod advmod head
+QS ::= IP aux neg? AdV? have? cop Comp # nsubj cop advmod advmod aux head
+QS ::= IP V NP neg? AdV? NP_obl? Adv? # obj head nsubj advmod advmod obl advmod
 
-QS ::= cop NP neg? VP_pass # aux:pass nsubj:pass advmod head
-QS ::= have NP neg? cop VP_pass # aux nsubj:pass advmod aux:pass head
-QS ::= aux NP neg? have? cop VP_pass # aux nsubj:pass advmod aux:pass aux head
+QS ::= IP VP_pass neg? # nsubj:pass head advmod # 0.8
+QS ::= IP have neg? AdV? VP_pass # nsubj:pass aux advmod advmod head # 0.8
+QS ::= IP aux neg? AdV? have? VP_pass # nsubj:pass aux advmod advmod aux head # 0.8
+QS ::= IP V_pass neg? AdV? NP_obl? Adv? # nsubj:pass head advmod advmod obl advmod # 0.8
 
-QS ::= IP VP # nsubj head
-QS ::= IP do neg VP # nsubj aux advmod head
-QS ::= IP aux neg? have? VP # nsubj aux advmod aux head
-QS ::= IP cop neg? Comp # nsubj cop advmod head
-QS ::= IP aux neg? have? cop Comp # nsubj cop advmod aux head
-QS ::= IP do NP neg? VPSlash # obj aux nsubj advmod head
-QS ::= IP aux NP neg? have? VPSlash # obj aux nsubj advmod aux head
-
-QS ::= IP cop neg? VP_pass # nsubj:pass aux:pass advmod head
-QS ::= IP have neg? cop VP_pass # nsubj:pass aux advmod aux:pass head
-QS ::= IP aux neg? have? cop VP_pass # nsubj:pass aux advmod aux:pass aux head
-
-QS ::= IAdv do NP neg? VP # advmod aux nsubj advmod head
+QS ::= IAdv V NP neg? NP? NP_obl? Adv?  # advmod head nsubj advmod obj obl advmod
 QS ::= IAdv aux NP neg? have? VP # advmod aux nsubj advmod aux head
 QS ::= IAdv cop NP neg? Comp # advmod cop nsubj advmod head
-QS ::= IAdv cop neg NP Comp # advmod cop nsubj advmod head
+QS ::= IAdv have NP neg? cop Comp # advmod aux nsubj advmod cop head
+QS ::= IAdv V_pass NP neg? NP_obl? Adv? # advmod head nsubj:pass advmod obl advmod  # 0.8
+QS ::= IAdv have NP neg? VP_pass # advmod aux nsubj:pass advmod head  # 0.8
+QS ::= IAdv aux NP neg? have? VP_pass # advmod aux nsubj:pass advmod aux head  # 0.8
 
-QS ::= IAdv cop NP neg? VP_pass # advmod aux:pass nsubj:pass advmod head
 -- indirect questions
 QS ::= if S # mark head
 QS ::= IP som neg? AdV? aux? have? VP # dislocated nsubj advmod advmod aux aux head
@@ -105,9 +104,10 @@ RS ::= RP neg? Adv? aux? have? cop Comp # nsubj advmod advmod aux aux cop head
 RS ::= RP? NP neg? Adv? aux? have? VPSlash # obj nsubj advmod advmod aux aux head
 RS ::= RP neg? Adv? aux? have? VP_pass # nsubj:pass advmod advmod aux aux head # 0.8
 
+
 -- imperatives
-Imp ::= do? neg? VP # aux advmod head
-Imp ::= do? neg? cop Comp # aux advmod cop head
+Imp ::= VP neg? # head advmod
+Imp ::= V neg? NP? NP_obl? Adv? # head advmod obj obl advmod
 
 -- sentences with adverbials
 S  ::= S_subcomma S # advcl head
@@ -119,7 +119,6 @@ S  ::= NP_oblcomma S # nmod head
 SC ::= S_that
 SC ::= QS
 SC ::= VP_to
-
 
 VP ::= V Prep_prt? # head compound:prt
 VP ::= aux # # 0.001
@@ -181,14 +180,19 @@ NP ::= NP SC # head acl
 NP ::= NP comma? S_sub # head punct acl
 NP ::= NP comma? RS # head punct acl:relcl
 NP ::= Symb Num # head nummod
+NP ::= NP comma? VP_pass # head punct acl # 0.01
 
-NP_poss ::= NP 's # head case
+NP_poss ::= NP_gen
 NP_poss ::= Pron_poss
+NP_poss ::= N_poss_suffix
+
+NP_gen ::= Det? N_gen # det head
+NP_gen ::= PN_gen
 
 -- some very special rules ---
 NP        ::= Det CN_quoted # det head
 CN_quoted ::= quote CN quote # punct head punct
-NP        ::= NP NP_appos # head appos # 0.01
+NP        ::= NP NP_appos # head appos # 0.1
 NP_appos  ::= Punct_appos NP # punct head
 
 Num ::= Card
@@ -200,12 +204,13 @@ CN ::= CN comma? AP # head punct amod # 0.01
 
 PN ::= PN_one PN # head flat
 
-N ::= N_one N # compound head
+-- N ::= N_one N # compound head
 N ::= PN CN # compound head
 
 Card ::= Card_one Card # compound head
 
 IP ::= IDet CN # det head
+
 
 -- adjectival phrases
 AP ::= A
@@ -247,6 +252,7 @@ ListVP   ::= ListVP VP_comma # head conj
 VP_conj  ::= comma? Conj VP # punct cc head
 VP_comma ::= comma VP # punct head
 
+
 -- in Adv conjunctions, we want to include NP_obl parts: all that matters for UD is the category of the first conjunct
 Adv       ::= Conj_pre? ListAdv Adv_conj # cc:preconj head conj
 ListAdv   ::= Adv
@@ -260,10 +266,9 @@ NP_obl     ::= Conj_pre? ListNP_obl Adv_conj # cc:preconj head conj
 ListNP_obl ::= NP_obl
 ListNP_obl ::= ListNP_obl Adv_comma # head conj
 
-
 -- POS tag configurations
 #pos AUX cop do have aux
-#pos VERB V V2 V3 VS VV V2V V2C be_V ertil
+#pos VERB V V2 V3 VS VV V2V V2C be_V finnas
 #pos NOUN N N_one
 #pos ADJ A
 #pos PROPN PN PN_one
@@ -271,7 +276,7 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 #pos SCONJ Subj that if
 #pos CCONJ Conj Conj_pre
 #pos DET Det IDet
-#pos PRON Pron IP Pron_poss it sem
+#pos PRON Pron IP Pron_poss it som
 #pos PART to 's
 #pos PUNCT Punct Punct_appos comma quote colon parenth
 #pos NUM Card Digits Card_one
@@ -288,54 +293,52 @@ ListNP_obl ::= ListNP_obl Adv_comma # head conj
 
 -- structural word lexicon: normal categories
 #token IP hver hvað
-#token IAdv hvenær hvernig hvar afhverju
+#token IAdv hvenær hvernig hvar af hverju
 #token AdA mjög fyrir
 #token AdV alltaf aldrei
-#token Det einn ein eitt það hver hvergi hverju einhver einhvað einhverjum enginn ekkert engu nokkur neitt engir
-#token Pron ég mig þú þig hann honum henni við okkur þið ykkur þeir þeim þá
-#token Subj ef þegar þó að
-#token aux getur gat mátti viljað mun eigi skuli skyldi
+#token Det einn eitt það hvern hver hvert nokkur nokkurt nokkrar enginn ekkert engar
+#token Pron ég mig þú þig hann hann hún hana við okkur þið ykkur þeir þær þau
+#token Subj ef þegar þar sem
+#token aux get gat þarf vil vilji skal ætti
 #token Punct . ! ?
 #token Punct_appos , :
 #token Conj og eða
-#token Conj_pre bæði hvorki
-#token IDet hvaða hvilken hvilket hvilka
-#token Pron_poss minn mitt mínir þín þitt þínir hans hennar okkar okkar okkar ykkar ykkar ykkar þeirra sína sitt sínir
+#token Conj_pre bæði hvort hvorki
+#token IDet hver hverju hverja
+#token Pron_poss minn mitt mín þinn þitt þín hans hennar okkar okkart okkar ykkar ykkurt ykkar þeirra sinn sitt sína
 #token RP sem
 
 -- structural word lexicon: syncategorematic words
-#token cop er eru var voru verið
-#token be_V er eru var voru verið
-#token do gera gerir gerði gerðu
-#token have hafa hefur hafði haft
+#token Prep_prt af burt niður til upp út
+#token cop er var verið vera
+#token be_V er var verið vera
+#token have hafa hefur hafði
+#token finnas finnst fannst fundist finnast
 #token neg ekki
 #token that að
-#token to til
+#token to að
 #token it það
 #token if ef hvort
-#token there þar
+#token som sem
 #token comma ,
 #token colon :
 #token quote "
-#token ertil er til
 #token parenth ( ) [ ]
 
 -- content word lexicon
-#token PN Jóna Guðmundur
-#token V sofa sofið fór fram ganga gengur gengu söng syngur söng sungið flytja flytur flutti gerist gerist gerðist fara fer ferðast fór hlaupa hleypur hljóta hlýtur hlaut vita veit vissi vitna vinnur vann vinna ákveða ákvað ákveðið
-#token V2 sjá sér sáði sáð seen älska elskar elskuðu líta lítur litið gefa gefur gaf hafa hefur hafði koma kemur kom passa passar passaði ákveða ákveður ákveðið
-#token V2C kalla kallar kallaði íhuga íhugar íhugaði
-#token V2V sjá sjáir sáði íhuga íhugar íhugaði stöðva stöðvar stöðvaði
-#token VS segir segir sagði trúa trúir trúaði
+#token PN Jón María
+#token V sefur sefur svaf geng gengur gekk syng syngur söng sung fær færðist hendi hendur hendið far fer fór hljóp hljópur hljóp
+#token V2 sér sér sá sé elskar elskar elskaði horfir horfir sá gef gefur gaf hafa áhyggjur áhyggjur áhuga búa býr bjó ákveða ákveður ákvað
+#token V2 veit veitur vissi vitað
+#token V3 gef gefur gaf
+#token V2C kalla kallar kallaði hugsa hugsaði hugsaði
+#token V2V sjá sér sá hugsa hugsaði hugsaði stöðva stöðvar stöðvaði
+#token VS segja segir sagði trúa trúir trúði
 #token VV vilja vill reyna reynir
 #token A gamall góður forvitinn svartur bestur kaldur breyttur þreyttur slæmur stór stærri
-#token N ást svefn mannirnir menn kona konur köttur kettir læknir bjór heimurinn íslenska tréð eitthvað annað tími röddin stofan vísindin kona konur
-#token N hús forseti tungl jörð stelpa stelpur vín bjór
-#token Adv núna í dag hér áður þarna í gær á morgun alltaf
+#token N ást svefn ástir svefn karlar karlar konur konur ketti kettir lækna bjór heimur fíll herbergi vísbending vísbendingar ástæða ástæður tapari taparar mynd líf
+#token N hús forseti tungl Jörð stelpa stelpur vín bjór
+#token Adv núna í dag hér áður þar í gær á morgun alltaf
 #token Predet líklega aðeins
-#token Symb $
-
-
-
-
+#token Symb kr
 

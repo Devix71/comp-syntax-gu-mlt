@@ -310,13 +310,13 @@
 4	að	_	SCONJ	_	_	6	mark	_	_
 5	hann	_	PRON	_	_	6	nsubj	_	_
 6	hefði	_	AUX	_	_	0	root	_	_
-7	ekki	_	ADV	_	_	8	neg	_	_
+7	ekki	_	ADV	_	_	8	advmod	_	_
 8	brennt	_	VERB	_	_	6	ccomp	_	_
 9	kirkjuna	_	NOUN	_	_	8	obj	_	_
 10	ef	_	SCONJ	_	_	14	mark	_	_
 11	hann	_	PRON	_	_	14	nsubj	_	_
 12	hefði	_	AUX	_	_	14	aux	_	_
-13	ekki	_	ADV	_	_	15	neg	_	_
+13	ekki	_	ADV	_	_	15	advmod	_	_
 14	haldið	_	VERB	_	_	8	advcl	_	_
 15	að	_	SCONJ	_	_	17	mark	_	_
 16	biskupinn	_	NOUN	_	_	17	nsubj	_	_
